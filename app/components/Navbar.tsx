@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <nav
@@ -8,59 +10,97 @@ export default function Navbar() {
         padding: "20px 60px",
         backgroundColor: "#ffffff",
         boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        position: "sticky",
+        top: 0,
+        zIndex: 1000,
       }}
     >
-      <h2
+      {/* Logo */}
+      <Link
+        href="/"
         style={{
           color: "#2563EB",
-          margin: 0,
+          textDecoration: "none",
           fontSize: "28px",
           fontWeight: "bold",
         }}
       >
         Handcrafted Haven
-      </h2>
+      </Link>
 
+      {/* Navigation Links */}
       <div
         style={{
           display: "flex",
           gap: "30px",
+          alignItems: "center",
         }}
       >
-        <a
+        <Link
           href="/"
-          style={{ textDecoration: "none", color: "#000", fontWeight: "500" }}
+          style={{
+            textDecoration: "none",
+            color: "#000",
+            fontWeight: "500",
+          }}
         >
           Home
-        </a>
+        </Link>
 
-        <a
-          href="#products"
-          style={{ textDecoration: "none", color: "#000", fontWeight: "500" }}
+        <Link
+          href="/products"
+          style={{
+            textDecoration: "none",
+            color: "#000",
+            fontWeight: "500",
+          }}
         >
           Products
-        </a>
+        </Link>
 
-        <a
-          href="#artisans"
-          style={{ textDecoration: "none", color: "#000", fontWeight: "500" }}
+        <Link
+          href="/reviews"
+          style={{
+            textDecoration: "none",
+            color: "#000",
+            fontWeight: "500",
+          }}
+        >
+          Reviews
+        </Link>
+
+        <Link
+          href="/artisans"
+          style={{
+            textDecoration: "none",
+            color: "#000",
+            fontWeight: "500",
+          }}
         >
           Artisans
-        </a>
+        </Link>
 
-        <a
-          href="#about"
-          style={{ textDecoration: "none", color: "#000", fontWeight: "500" }}
+        <Link
+          href="/about"
+          style={{
+            textDecoration: "none",
+            color: "#000",
+            fontWeight: "500",
+          }}
         >
           About
-        </a>
+        </Link>
 
-        <a
-          href="#contact"
-          style={{ textDecoration: "none", color: "#000", fontWeight: "500" }}
+        <Link
+          href="/contact"
+          style={{
+            textDecoration: "none",
+            color: "#000",
+            fontWeight: "500",
+          }}
         >
           Contact
-        </a>
+        </Link>
       </div>
     </nav>
   );
