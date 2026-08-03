@@ -1,69 +1,42 @@
 import Link from "next/link";
 
-const featuredProducts = [
-  {
-    id: 1,
-    name: "Handmade Wooden Bowl",
-    image: "/images/wooden-bowl.jpg",
-    price: "$45",
-  },
-  {
-    id: 2,
-    name: "African Beaded Necklace",
-    image: "/images/necklace.jpg",
-    price: "$30",
-  },
-  {
-    id: 3,
-    name: "Handwoven Basket",
-    image: "/images/basket.jpg",
-    price: "$55",
-  },
-];
-
-const artisans = [
-  {
-    name: "Sarah Johnson",
-    craft: "Wood Crafts",
-  },
-  {
-    name: "Grace Williams",
-    craft: "Jewelry Design",
-  },
-  {
-    name: "Michael Brown",
-    craft: "Basket Weaving",
-  },
-];
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <main>
-
-      {/* Hero */}
+    <main
+      style={{
+        backgroundColor: "#f8f9fa",
+        minHeight: "100vh",
+      }}
+    >
+      {/* Hero Section */}
       <section
         style={{
-          background: "#2563EB",
+          background: "linear-gradient(135deg, #2563EB, #1E40AF)",
           color: "white",
           textAlign: "center",
-          padding: "90px 20px",
+          padding: "100px 20px",
         }}
       >
-        <h1 style={{ fontSize: "3.5rem", marginBottom: "20px" }}>
+        <h1
+          style={{
+            fontSize: "56px",
+            marginBottom: "20px",
+          }}
+        >
           Welcome to Handcrafted Haven
         </h1>
 
         <p
           style={{
-            maxWidth: "700px",
-            margin: "auto",
-            lineHeight: 1.8,
+            maxWidth: "750px",
+            margin: "0 auto",
             fontSize: "20px",
+            lineHeight: "1.8",
           }}
         >
-          Discover unique handmade products created by talented artisans.
-          Every purchase supports creativity, craftsmanship, and local
-          communities.
+          Discover authentic handmade African crafts created by talented
+          artisans. Every purchase supports local craftsmanship and preserves
+          traditional skills.
         </p>
 
         <Link href="/products">
@@ -71,9 +44,12 @@ export default function Home() {
             style={{
               marginTop: "35px",
               padding: "15px 35px",
-              fontSize: "18px",
+              backgroundColor: "white",
+              color: "#2563EB",
               border: "none",
               borderRadius: "8px",
+              fontWeight: "bold",
+              fontSize: "18px",
               cursor: "pointer",
             }}
           >
@@ -82,218 +58,124 @@ export default function Home() {
         </Link>
       </section>
 
-      {/* Featured Products */}
-      <section style={{ padding: "70px 60px" }}>
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "40px",
-            color: "#2563EB",
-          }}
-        >
-          Featured Products
-        </h2>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-            gap: "30px",
-          }}
-        >
-          {featuredProducts.map((product) => (
-            <div
-              key={product.id}
-              style={{
-                borderRadius: "12px",
-                overflow: "hidden",
-                background: "white",
-                boxShadow: "0 5px 12px rgba(0,0,0,.1)",
-              }}
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                style={{
-                  width: "100%",
-                  height: "220px",
-                  objectFit: "cover",
-                }}
-              />
-
-              <div style={{ padding: "20px" }}>
-                <h3>{product.name}</h3>
-                <p
-                  style={{
-                    color: "#2563EB",
-                    fontWeight: "bold",
-                  }}
-                >
-                  {product.price}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Artisans */}
-      <section
-        style={{
-          background: "#F8FAFC",
-          padding: "70px 60px",
-        }}
-      >
-        <h2
-          style={{
-            textAlign: "center",
-            color: "#2563EB",
-            marginBottom: "40px",
-          }}
-        >
-          Meet Our Artisans
-        </h2>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
-            gap: "30px",
-          }}
-        >
-          {artisans.map((artisan) => (
-            <div
-              key={artisan.name}
-              style={{
-                background: "white",
-                padding: "25px",
-                borderRadius: "10px",
-                textAlign: "center",
-                boxShadow: "0 5px 10px rgba(0,0,0,.08)",
-              }}
-            >
-              <h3>{artisan.name}</h3>
-              <p>{artisan.craft}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
+      {/* Features */}
       <section
         style={{
           padding: "70px 40px",
-          textAlign: "center",
         }}
       >
         <h2
           style={{
+            textAlign: "center",
             color: "#2563EB",
+            fontSize: "40px",
+            marginBottom: "50px",
           }}
         >
-          Why Choose Handcrafted Haven?
+          Why Shop With Us?
         </h2>
 
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "40px",
-            flexWrap: "wrap",
-            marginTop: "40px",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px,1fr))",
+            gap: "30px",
           }}
         >
-          <div>
-            <h3>🎨 Handmade</h3>
-            <p>Every item is crafted with care.</p>
-          </div>
+          {[
+            {
+              title: "Authentic Handmade Products",
+              text: "Every item is handmade by skilled African artisans.",
+            },
+            {
+              title: "Support Local Communities",
+              text: "Every purchase helps artisans grow their businesses.",
+            },
+            {
+              title: "Secure Shopping",
+              text: "Enjoy a safe and trusted shopping experience.",
+            },
+            {
+              title: "Fast Delivery",
+              text: "Reliable delivery to customers around the world.",
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              style={{
+                backgroundColor: "white",
+                padding: "30px",
+                borderRadius: "12px",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                textAlign: "center",
+              }}
+            >
+              <h3
+                style={{
+                  color: "#2563EB",
+                  marginBottom: "15px",
+                }}
+              >
+                {item.title}
+              </h3>
 
-          <div>
-            <h3>🌍 Community</h3>
-            <p>Support local artisans worldwide.</p>
-          </div>
-
-          <div>
-            <h3>⭐ Quality</h3>
-            <p>Unique products you won't find elsewhere.</p>
-          </div>
+              <p
+                style={{
+                  color: "#555",
+                  lineHeight: "1.7",
+                }}
+              >
+                {item.text}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Call to Action */}
       <section
         style={{
-          background: "#F8FAFC",
-          padding: "70px",
+          backgroundColor: "#2563EB",
+          color: "white",
+          textAlign: "center",
+          padding: "70px 20px",
         }}
       >
         <h2
           style={{
-            textAlign: "center",
-            color: "#2563EB",
+            fontSize: "40px",
+            marginBottom: "20px",
           }}
         >
-          What Our Customers Say
+          Ready to Discover Unique Handmade Crafts?
         </h2>
 
-        <blockquote
+        <p
           style={{
-            maxWidth: "700px",
-            margin: "40px auto",
-            fontStyle: "italic",
-            textAlign: "center",
+            fontSize: "18px",
+            marginBottom: "30px",
           }}
         >
-          "The quality exceeded my expectations. I love knowing my purchase
-          supports talented artisans."
-        </blockquote>
-
-        <p style={{ textAlign: "center", fontWeight: "bold" }}>
-          — Emily Carter
-        </p>
-      </section>
-
-      {/* CTA */}
-      <section
-        style={{
-          background: "#2563EB",
-          color: "white",
-          padding: "70px",
-          textAlign: "center",
-        }}
-      >
-        <h2>Are You an Artisan?</h2>
-
-        <p style={{ margin: "20px 0" }}>
-          Join our marketplace and showcase your handmade creations to customers
-          around the world.
+          Browse our growing collection of authentic African handmade products.
         </p>
 
-        <Link href="/contact">
+        <Link href="/products">
           <button
             style={{
               padding: "15px 35px",
-              borderRadius: "8px",
+              backgroundColor: "white",
+              color: "#2563EB",
               border: "none",
+              borderRadius: "8px",
+              fontSize: "18px",
+              fontWeight: "bold",
               cursor: "pointer",
             }}
           >
-            Become a Seller
+            Explore Products
           </button>
         </Link>
       </section>
-
-      {/* Footer */}
-      <footer
-        style={{
-          background: "#111827",
-          color: "white",
-          textAlign: "center",
-          padding: "25px",
-        }}
-      >
-        © 2026 Handcrafted Haven. All Rights Reserved.
-      </footer>
     </main>
   );
 }

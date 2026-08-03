@@ -1,37 +1,24 @@
-const products = [
-  {
-    id: 1,
-    name: "Handmade Wooden Bowl",
-    image: "/images/wooden-bowl.jpg",
-    category: "Home Decor",
-    description:
-      "A beautifully crafted wooden bowl made from sustainable materials.",
-    price: "$35",
-    artisan: "Sarah Johnson",
-  },
-  {
-    id: 2,
-    name: "African Beaded Necklace",
-    image: "/images/necklace.jpg",
-    category: "Jewelry",
-    description:
-      "A unique handmade necklace inspired by traditional African designs.",
-    price: "$25",
-    artisan: "Grace Williams",
-  },
-  {
-    id: 3,
-    name: "Handwoven Basket",
-    image: "/images/basket.jpg",
-    category: "Crafts",
-    description:
-      "A durable handcrafted basket created using traditional weaving methods.",
-    price: "$45",
-    artisan: "Michael Brown",
-  },
-];
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { products } from "../data/products";
 
 export default function ProductsPage() {
+  const [category, setCategory] = useState("All");
+  const [search, setSearch] = useState("");
+
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory =
+      category === "All" || product.category === category;
+
+    const matchesSearch = product.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
+
   return (
     <main
       style={{
@@ -42,32 +29,85 @@ export default function ProductsPage() {
     >
       <h1
         style={{
-          fontSize: "36px",
-          fontWeight: "bold",
           textAlign: "center",
-          marginBottom: "40px",
+          fontSize: "36px",
           color: "#2563EB",
+          marginBottom: "30px",
         }}
       >
         Handmade Products
       </h1>
 
+      {/* Search */}
+      <div
+        style={{
+          textAlign: "center",
+          marginBottom: "20px",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{
+            width: "350px",
+            padding: "12px",
+            borderRadius: "8px",
+            border: "1px solid #ccc",
+          }}
+        />
+      </div>
+
+      {/* Filters */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "15px",
+          flexWrap: "wrap",
+          marginBottom: "40px",
+        }}
+      >
+        {["All", "Home Decor", "Jewelry", "Crafts"].map((item) => (
+          <button
+            key={item}
+            onClick={() => setCategory(item)}
+            style={{
+              padding: "10px 20px",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              backgroundColor:
+                category === item ? "#2563EB" : "#ddd",
+              color:
+                category === item ? "white" : "black",
+              fontWeight: "bold",
+            }}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+
+      {/* Products */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gridTemplateColumns:
+            "repeat(auto-fit, minmax(300px, 1fr))",
           gap: "30px",
         }}
       >
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div
             key={product.id}
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "white",
               borderRadius: "12px",
               overflow: "hidden",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              transition: "0.3s",
+              boxShadow:
+                "0 4px 12px rgba(0,0,0,0.1)",
             }}
           >
             <img
@@ -75,60 +115,54 @@ export default function ProductsPage() {
               alt={product.name}
               style={{
                 width: "100%",
-                height: "220px",
+                height: "300px",
                 objectFit: "cover",
               }}
             />
 
             <div style={{ padding: "20px" }}>
-              <h2
-                style={{
-                  marginBottom: "10px",
-                  fontSize: "24px",
-                  color: "#222",
-                }}
-              >
-                {product.name}
-              </h2>
+              <h2>{product.name}</h2>
 
-              <p style={{ marginBottom: "8px" }}>
-                <strong>Category:</strong> {product.category}
+              <p>
+                <strong>Category:</strong>{" "}
+                {product.category}
               </p>
 
-              <p style={{ marginBottom: "12px", color: "#555" }}>
-                {product.description}
+              <p>{product.description}</p>
+
+              <p>
+                <strong>Artisan:</strong>{" "}
+                {product.artisan}
               </p>
 
-              <p style={{ marginBottom: "8px" }}>
-                <strong>Artisan:</strong> {product.artisan}
+              <p>
+                ⭐ {product.rating} / 5
               </p>
 
-              <p
+              <h3
                 style={{
                   color: "#2563EB",
-                  fontSize: "22px",
-                  fontWeight: "bold",
-                  marginBottom: "15px",
                 }}
               >
                 {product.price}
-              </p>
+              </h3>
 
-              <button
-                style={{
-                  width: "100%",
-                  padding: "12px",
-                  backgroundColor: "#2563EB",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "8px",
-                  cursor: "pointer",
-                  fontSize: "16px",
-                  fontWeight: "bold",
-                }}
-              >
-                View Product
-              </button>
+              <Link href={`/products/${product.id}`}>
+                <button
+                  style={{
+                    width: "100%",
+                    padding: "12px",
+                    backgroundColor: "#2563EB",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    fontWeight: "bold",
+                  }}
+                >
+                  View Product
+                </button>
+              </Link>
             </div>
           </div>
         ))}

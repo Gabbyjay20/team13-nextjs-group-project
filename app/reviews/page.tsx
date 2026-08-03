@@ -1,27 +1,27 @@
 const reviews = [
   {
     id: 1,
-    customer: "David",
+    name: "Emily Carter",
     product: "Handmade Wooden Bowl",
-    rating: "★★★★★",
-    comment:
-      "Excellent quality and beautiful craftsmanship. I love this product.",
+    rating: 5,
+    review:
+      "The wooden bowl exceeded my expectations. Beautiful craftsmanship and excellent quality.",
   },
   {
     id: 2,
-    customer: "Mary",
+    name: "David Smith",
     product: "African Beaded Necklace",
-    rating: "★★★★☆",
-    comment:
-      "The design is beautiful and the handmade details are amazing.",
+    rating: 4,
+    review:
+      "A lovely necklace with amazing details. My wife absolutely loved it.",
   },
   {
     id: 3,
-    customer: "John",
+    name: "Sophia Johnson",
     product: "Handwoven Basket",
-    rating: "★★★★★",
-    comment:
-      "A very durable and unique handmade product.",
+    rating: 5,
+    review:
+      "Very durable and stylish. It fits perfectly in my living room.",
   },
 ];
 
@@ -36,10 +36,10 @@ export default function ReviewsPage() {
     >
       <h1
         style={{
-          fontSize: "36px",
-          fontWeight: "bold",
-          marginBottom: "40px",
+          textAlign: "center",
+          fontSize: "40px",
           color: "#2563EB",
+          marginBottom: "40px",
         }}
       >
         Customer Reviews
@@ -49,6 +49,8 @@ export default function ReviewsPage() {
         style={{
           display: "grid",
           gap: "25px",
+          maxWidth: "900px",
+          margin: "0 auto",
         }}
       >
         {reviews.map((review) => (
@@ -61,22 +63,30 @@ export default function ReviewsPage() {
               boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
             }}
           >
-            <h2>{review.product}</h2>
+            <h2>{review.name}</h2>
 
             <p>
-              <strong>Customer:</strong> {review.customer}
+              <strong>Product:</strong> {review.product}
             </p>
 
             <p
               style={{
-                color: "#f59e0b",
-                fontSize: "22px",
+                color: "#F59E0B",
+                fontSize: "20px",
+                margin: "10px 0",
               }}
             >
-              {review.rating}
+              {"⭐".repeat(review.rating)}
             </p>
 
-            <p>{review.comment}</p>
+            <p
+              style={{
+                color: "#555",
+                lineHeight: "1.8",
+              }}
+            >
+              "{review.review}"
+            </p>
           </div>
         ))}
       </div>
