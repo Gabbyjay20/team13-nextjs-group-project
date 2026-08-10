@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,9 +15,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Handcrafted Haven",
+  title: {
+    default: "Handcrafted Haven",
+    template: "%s | Handcrafted Haven",
+  },
+
   description:
-    "A marketplace connecting customers with talented local artisans and handmade products.",
+    "Handcrafted Haven is a marketplace connecting customers with talented African artisans and authentic handmade products.",
+
+  keywords: [
+    "handmade products",
+    "African artisans",
+    "handcrafted products",
+    "African crafts",
+    "artisan marketplace",
+    "handmade crafts",
+  ],
+
+  authors: [
+    {
+      name: "Handcrafted Haven",
+    },
+  ],
+
+  openGraph: {
+    title: "Handcrafted Haven",
+    description:
+      "Discover unique handcrafted products from talented African artisans.",
+    type: "website",
+    siteName: "Handcrafted Haven",
+  },
 };
 
 export default function RootLayout({
@@ -27,11 +55,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-full flex flex-col">
+      <body
+        style={{
+          margin: 0,
+          minHeight: "100vh",
+          fontFamily: "Arial, sans-serif",
+        }}
+      >
         <Navbar />
-        {children}
+
+        <main>{children}</main>
+
+        <Footer />
       </body>
     </html>
   );

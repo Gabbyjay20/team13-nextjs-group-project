@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products } from "../../data/products";
+import ReviewForm from "./ReviewForm";
 
 type PageProps = {
   params: Promise<{
@@ -24,97 +25,216 @@ export default async function ProductDetailsPage({
   return (
     <main
       style={{
-        maxWidth: "1000px",
-        margin: "40px auto",
-        padding: "20px",
+        width: "100%",
+        boxSizing: "border-box",
+        backgroundColor: "#ffffff",
+        minHeight: "100vh",
+        padding: "40px 20px 70px",
       }}
     >
-      <Link
-        href="/products"
-        style={{
-          color: "#2563EB",
-          textDecoration: "none",
-          fontWeight: "bold",
-        }}
-      >
-        ← Back to Products
-      </Link>
-
       <div
         style={{
-          display: "flex",
-          gap: "40px",
-          flexWrap: "wrap",
-          marginTop: "30px",
+          maxWidth: "1100px",
+          margin: "0 auto",
         }}
       >
-        <img
-          src={product.image}
-          alt={product.name}
-          style={{
-            width: "420px",
-            maxWidth: "100%",
-            height: "420px",
-            objectFit: "cover",
-            borderRadius: "12px",
-          }}
-        />
+        {/* BACK TO PRODUCTS */}
 
-        <div style={{ flex: 1 }}>
-          <h1
+        <Link
+          href="/products"
+          style={{
+            display: "inline-block",
+            color: "#2563EB",
+            textDecoration: "none",
+            fontWeight: "bold",
+            marginBottom: "25px",
+          }}
+        >
+          ← Back to Products
+        </Link>
+
+        {/* PRODUCT INFORMATION */}
+
+        <section
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "40px",
+            alignItems: "center",
+          }}
+        >
+          {/* PRODUCT IMAGE */}
+
+          <div
             style={{
-              fontSize: "40px",
+              width: "100%",
+            }}
+          >
+            <img
+              src={product.image}
+              alt={product.name}
+              style={{
+                width: "100%",
+                maxWidth: "500px",
+                height: "auto",
+                aspectRatio: "1 / 1",
+                objectFit: "cover",
+                borderRadius: "15px",
+                display: "block",
+                margin: "0 auto",
+              }}
+            />
+          </div>
+
+          {/* PRODUCT INFORMATION */}
+
+          <div
+            style={{
+              width: "100%",
+            }}
+          >
+            <p
+              style={{
+                color: "#2563EB",
+                fontWeight: "bold",
+                fontSize: "16px",
+                marginBottom: "10px",
+              }}
+            >
+              {product.category}
+            </p>
+
+            <h1
+              style={{
+                fontSize: "clamp(32px, 6vw, 48px)",
+                lineHeight: "1.15",
+                marginBottom: "20px",
+                color: "#111827",
+              }}
+            >
+              {product.name}
+            </h1>
+
+            <p
+              style={{
+                fontSize: "18px",
+                marginBottom: "12px",
+              }}
+            >
+              <strong>Artisan:</strong>{" "}
+              {product.artisan}
+            </p>
+
+            <p
+              style={{
+                color: "#F59E0B",
+                fontSize: "20px",
+                fontWeight: "bold",
+                marginBottom: "15px",
+              }}
+            >
+              ⭐ {product.rating} / 5
+            </p>
+
+            <h2
+              style={{
+                color: "#2563EB",
+                fontSize: "32px",
+                marginBottom: "20px",
+              }}
+            >
+              {product.price}
+            </h2>
+
+            <p
+              style={{
+                color: "#555",
+                fontSize: "17px",
+                lineHeight: "1.8",
+                marginBottom: "25px",
+              }}
+            >
+              {product.description}
+            </p>
+
+            {/* CONTACT ARTISAN */}
+
+            <Link
+              href={`/artisans/${product.artisanId}`}
+              style={{
+                display: "inline-block",
+                width: "100%",
+                maxWidth: "300px",
+                boxSizing: "border-box",
+                textAlign: "center",
+                backgroundColor: "#2563EB",
+                color: "white",
+                padding: "14px 25px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontSize: "16px",
+                fontWeight: "bold",
+              }}
+            >
+              Contact Artisan
+            </Link>
+          </div>
+        </section>
+
+        {/* PRODUCT INFORMATION CARD */}
+
+        <section
+          style={{
+            marginTop: "60px",
+            padding: "30px",
+            backgroundColor: "#f8f9fa",
+            borderRadius: "15px",
+          }}
+        >
+          <h2
+            style={{
+              color: "#1E3A8A",
+              fontSize: "28px",
               marginBottom: "20px",
             }}
           >
-            {product.name}
-          </h1>
-
-          <p>
-            <strong>Category:</strong> {product.category}
-          </p>
-
-          <p>
-            <strong>Artisan:</strong> {product.artisan}
-          </p>
-
-          <p>
-            ⭐ {product.rating} / 5
-          </p>
-
-          <h2
-            style={{
-              color: "#2563EB",
-              fontSize: "28px",
-            }}
-          >
-            {product.price}
+            Product Information
           </h2>
 
-          <p
+          <div
             style={{
-              marginTop: "20px",
-              lineHeight: "1.8",
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "20px",
             }}
           >
-            {product.description}
-          </p>
+            <div>
+              <strong>Product</strong>
+              <p>{product.name}</p>
+            </div>
 
-          <button
-            style={{
-              marginTop: "30px",
-              backgroundColor: "#2563EB",
-              color: "white",
-              padding: "14px 30px",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontSize: "16px",
-            }}
-          >
-            Contact Artisan
-          </button>
-        </div>
+            <div>
+              <strong>Category</strong>
+              <p>{product.category}</p>
+            </div>
+
+            <div>
+              <strong>Artisan</strong>
+              <p>{product.artisan}</p>
+            </div>
+
+            <div>
+              <strong>Rating</strong>
+              <p>⭐ {product.rating} / 5</p>
+            </div>
+          </div>
+        </section>
+
+        {/* REVIEWS */}
+
+        <ReviewForm />
       </div>
     </main>
   );

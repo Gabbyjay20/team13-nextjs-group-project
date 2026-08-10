@@ -1,6 +1,21 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  const links = [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/products" },
+    { name: "Reviews", path: "/reviews" },
+    { name: "Artisans", path: "/artisans" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+    { name: "🛒 Cart", path: "/cart" },
+  ];
+
   return (
     <nav
       style={{
@@ -13,6 +28,8 @@ export default function Navbar() {
         position: "sticky",
         top: 0,
         zIndex: 1000,
+        flexWrap: "wrap",
+        gap: "20px",
       }}
     >
       {/* Logo */}
@@ -28,79 +45,38 @@ export default function Navbar() {
         Handcrafted Haven
       </Link>
 
+
       {/* Navigation Links */}
       <div
         style={{
           display: "flex",
-          gap: "30px",
+          gap: "25px",
           alignItems: "center",
+          flexWrap: "wrap",
         }}
       >
-        <Link
-          href="/"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-            fontWeight: "500",
-          }}
-        >
-          Home
-        </Link>
+        {links.map((link) => {
+          const active = pathname === link.path;
 
-        <Link
-          href="/products"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-            fontWeight: "500",
-          }}
-        >
-          Products
-        </Link>
-
-        <Link
-          href="/reviews"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-            fontWeight: "500",
-          }}
-        >
-          Reviews
-        </Link>
-
-        <Link
-          href="/artisans"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-            fontWeight: "500",
-          }}
-        >
-          Artisans
-        </Link>
-
-        <Link
-          href="/about"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-            fontWeight: "500",
-          }}
-        >
-          About
-        </Link>
-
-        <Link
-          href="/contact"
-          style={{
-            textDecoration: "none",
-            color: "#000",
-            fontWeight: "500",
-          }}
-        >
-          Contact
-        </Link>
+          return (
+            <Link
+              key={link.path}
+              href={link.path}
+              style={{
+                textDecoration: "none",
+                color: active ? "#2563EB" : "#000",
+                fontWeight: active ? "bold" : "500",
+                borderBottom: active
+                  ? "3px solid #2563EB"
+                  : "3px solid transparent",
+                paddingBottom: "5px",
+                transition: "0.3s",
+              }}
+            >
+              {link.name}
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );

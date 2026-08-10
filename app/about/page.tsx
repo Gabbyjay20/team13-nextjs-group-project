@@ -1,67 +1,158 @@
+import Link from "next/link";
+
 export default function AboutPage() {
   return (
     <main
       style={{
-        padding: "60px",
         backgroundColor: "#f8f9fa",
         minHeight: "100vh",
       }}
     >
-      {/* Hero Section */}
+      {/* HERO */}
+
       <section
         style={{
+          padding: "70px 20px",
           textAlign: "center",
-          marginBottom: "60px",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "48px",
-            color: "#2563EB",
-            marginBottom: "20px",
-          }}
-        >
-          About Handcrafted Haven
-        </h1>
-
-        <p
-          style={{
-            maxWidth: "900px",
-            margin: "0 auto",
-            fontSize: "18px",
-            lineHeight: "1.8",
-            color: "#555",
-          }}
-        >
-          Handcrafted Haven is an online marketplace dedicated to connecting
-          talented African artisans with customers around the world. Our
-          platform celebrates creativity, preserves traditional craftsmanship,
-          and empowers local communities by showcasing authentic handmade
-          products.
-        </p>
-      </section>
-
-      {/* Mission & Vision */}
-      <section
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "30px",
-          marginBottom: "60px",
+          backgroundColor: "#ffffff",
         }}
       >
         <div
           style={{
-            backgroundColor: "#fff",
-            padding: "30px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            maxWidth: "850px",
+            margin: "0 auto",
+          }}
+        >
+          <p
+            style={{
+              color: "#2563EB",
+              fontWeight: "bold",
+              fontSize: "18px",
+              marginBottom: "10px",
+            }}
+          >
+            ABOUT HANDCRAFTED HAVEN
+          </p>
+
+          <h1
+            style={{
+              fontSize: "clamp(36px, 6vw, 56px)",
+              color: "#1E3A8A",
+              marginBottom: "25px",
+              lineHeight: "1.2",
+            }}
+          >
+            Celebrating African Craftsmanship
+          </h1>
+
+          <p
+            style={{
+              color: "#555",
+              fontSize: "18px",
+              lineHeight: "1.8",
+            }}
+          >
+            Handcrafted Haven connects customers with talented
+            African artisans and authentic handmade products.
+            We believe every handcrafted item has a story,
+            and every artisan deserves an opportunity to share
+            that story with the world.
+          </p>
+        </div>
+      </section>
+
+      {/* OUR STORY */}
+
+      <section
+        style={{
+          padding: "70px 20px",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1100px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "45px",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <h2
+              style={{
+                color: "#2563EB",
+                fontSize: "clamp(30px, 5vw, 40px)",
+                marginBottom: "20px",
+              }}
+            >
+              Our Story
+            </h2>
+
+            <p
+              style={{
+                color: "#555",
+                lineHeight: "1.8",
+                fontSize: "17px",
+              }}
+            >
+              Handcrafted Haven was created to provide a
+              digital marketplace where skilled artisans can
+              showcase their creativity and connect with
+              customers beyond their local communities.
+            </p>
+
+            <p
+              style={{
+                color: "#555",
+                lineHeight: "1.8",
+                fontSize: "17px",
+              }}
+            >
+              From beautifully carved wooden products to
+              handwoven baskets and African-inspired jewelry,
+              our marketplace celebrates the creativity,
+              culture, and dedication behind handmade products.
+            </p>
+          </div>
+
+          <div>
+            <img
+              src="/images/hero/hero-artisans.jpg"
+              alt="African artisans creating handcrafted products"
+              style={{
+                width: "100%",
+                height: "400px",
+                objectFit: "cover",
+                borderRadius: "18px",
+                display: "block",
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* OUR MISSION */}
+
+      <section
+        style={{
+          padding: "70px 20px",
+          backgroundColor: "#ffffff",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "850px",
+            margin: "0 auto",
           }}
         >
           <h2
             style={{
               color: "#2563EB",
-              marginBottom: "15px",
+              fontSize: "clamp(30px, 5vw, 40px)",
+              marginBottom: "25px",
             }}
           >
             Our Mission
@@ -70,103 +161,84 @@ export default function AboutPage() {
           <p
             style={{
               color: "#555",
+              fontSize: "18px",
               lineHeight: "1.8",
             }}
           >
-            To empower artisans by providing a trusted online marketplace where
-            handcrafted products can reach customers globally while preserving
-            Africa's rich cultural heritage.
-          </p>
-        </div>
-
-        <div
-          style={{
-            backgroundColor: "#fff",
-            padding: "30px",
-            borderRadius: "12px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-          }}
-        >
-          <h2
-            style={{
-              color: "#2563EB",
-              marginBottom: "15px",
-            }}
-          >
-            Our Vision
-          </h2>
-
-          <p
-            style={{
-              color: "#555",
-              lineHeight: "1.8",
-            }}
-          >
-            To become Africa's leading marketplace for authentic handmade
-            products while supporting artisans, promoting sustainability, and
-            inspiring creativity worldwide.
+            Our mission is to make handcrafted African products
+            easier to discover while helping artisans reach a
+            wider audience. We want to encourage appreciation
+            for traditional craftsmanship and support sustainable
+            consumption.
           </p>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section>
+      {/* OUR VALUES */}
+
+      <section
+        style={{
+          padding: "70px 20px",
+          backgroundColor: "#f8f9fa",
+        }}
+      >
         <h2
           style={{
             textAlign: "center",
             color: "#2563EB",
-            marginBottom: "40px",
-            fontSize: "36px",
+            fontSize: "clamp(30px, 5vw, 40px)",
+            marginBottom: "45px",
           }}
         >
-          Why Choose Handcrafted Haven?
+          What We Value
         </h2>
 
         <div
           style={{
+            maxWidth: "1100px",
+            margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(230px, 1fr))",
             gap: "25px",
           }}
         >
           {[
             {
-              title: "Authentic Handmade Products",
-              description:
-                "Every product is carefully handcrafted by experienced artisans using traditional techniques.",
+              title: "Authenticity",
+              text: "We celebrate genuine handmade products and the unique stories behind them.",
             },
             {
-              title: "Support Local Communities",
-              description:
-                "Every purchase directly supports skilled artisans and their families across Africa.",
+              title: "Community",
+              text: "We connect customers with artisans and help strengthen creative communities.",
             },
             {
-              title: "Quality Craftsmanship",
-              description:
-                "We ensure every product meets high-quality standards before reaching our customers.",
+              title: "Craftsmanship",
+              text: "We appreciate the skill, patience, and creativity required to create handmade products.",
             },
             {
-              title: "Secure Shopping",
-              description:
-                "Our platform provides a safe and reliable shopping experience for buyers worldwide.",
+              title: "Sustainability",
+              text: "We encourage responsible consumption and appreciation for products made with care.",
             },
-          ].map((item, index) => (
-            <div
-              key={index}
+          ].map((value) => (
+            <article
+              key={value.title}
               style={{
-                backgroundColor: "#fff",
-                padding: "25px",
-                borderRadius: "12px",
-                boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+                backgroundColor: "white",
+                padding: "30px 25px",
+                borderRadius: "14px",
+                boxShadow:
+                  "0 4px 12px rgba(0,0,0,0.08)",
               }}
             >
               <h3
                 style={{
                   color: "#2563EB",
-                  marginBottom: "15px",
+                  fontSize: "22px",
+                  marginBottom: "12px",
                 }}
               >
-                {item.title}
+                {value.title}
               </h3>
 
               <p
@@ -175,10 +247,79 @@ export default function AboutPage() {
                   lineHeight: "1.7",
                 }}
               >
-                {item.description}
+                {value.text}
               </p>
-            </div>
+            </article>
           ))}
+        </div>
+      </section>
+
+      {/* CALL TO ACTION */}
+
+      <section
+        style={{
+          padding: "80px 20px",
+          textAlign: "center",
+          backgroundColor: "#2563EB",
+          color: "white",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "clamp(30px, 5vw, 42px)",
+            marginBottom: "20px",
+          }}
+        >
+          Discover Something Handmade
+        </h2>
+
+        <p
+          style={{
+            maxWidth: "700px",
+            margin: "0 auto 30px",
+            fontSize: "18px",
+            lineHeight: "1.7",
+          }}
+        >
+          Explore unique products, meet talented artisans,
+          and support African craftsmanship.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "15px",
+            flexWrap: "wrap",
+          }}
+        >
+          <Link
+            href="/products"
+            style={{
+              padding: "14px 28px",
+              backgroundColor: "white",
+              color: "#2563EB",
+              textDecoration: "none",
+              borderRadius: "8px",
+              fontWeight: "bold",
+            }}
+          >
+            Explore Products
+          </Link>
+
+          <Link
+            href="/artisans"
+            style={{
+              padding: "14px 28px",
+              backgroundColor: "#1E3A8A",
+              color: "white",
+              textDecoration: "none",
+              borderRadius: "8px",
+              fontWeight: "bold",
+            }}
+          >
+            Meet Artisans
+          </Link>
         </div>
       </section>
     </main>

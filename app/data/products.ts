@@ -7,7 +7,8 @@ export const products = [
     description:
       "A beautifully crafted wooden bowl made from sustainable materials.",
     price: "$35",
-    artisan: "Sarah Johnson",
+    artisan: "Amina Okeke",
+    artisanId: 1,
     rating: 4.8,
   },
 
@@ -19,7 +20,8 @@ export const products = [
     description:
       "A unique handmade necklace inspired by traditional African designs.",
     price: "$25",
-    artisan: "Grace Williams",
+    artisan: "Zuri Ndlovu",
+    artisanId: 3,
     rating: 4.9,
   },
 
@@ -31,7 +33,8 @@ export const products = [
     description:
       "A durable handcrafted basket created using traditional weaving methods.",
     price: "$45",
-    artisan: "Michael Brown",
+    artisan: "Kwame Mensah",
+    artisanId: 2,
     rating: 4.7,
   },
 ];
